@@ -22,6 +22,8 @@ public class Vista extends JPanel{
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600,400);
+        //hacer que el frame aparezca en medio de la pantalla
+        frame.setLocationRelativeTo(null);
         
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -29,15 +31,18 @@ public class Vista extends JPanel{
 
         JButton undoButton = new JButton("Undo");
         JButton redoButton = new JButton("Redo");
-        // Ubicar los botones en la parte de abajo del frame que ocupen solo 20 pixeles de altura
-        panel.add(undoButton, BorderLayout.SOUTH);
-        panel.add(redoButton, BorderLayout.SOUTH);
-        panel.add(undoButton, BorderLayout.LINE_START);
-        panel.add(redoButton, BorderLayout.LINE_END);
+
         undoButton.addActionListener(e -> pml.actionUndo(e));
         redoButton.addActionListener(e -> pml.actionRedo(e));
+        // Ubicar los botones en la parte de abajo del frame que ocupen solo 20 pixeles de altura
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        
+
+        buttonPanel.add(undoButton);
+        buttonPanel.add(redoButton);
+
+        panel.add(buttonPanel,BorderLayout.SOUTH);
 
         frame.add(panel);
         frame.setVisible(true);
