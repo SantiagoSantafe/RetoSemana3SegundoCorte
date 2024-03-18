@@ -1,14 +1,14 @@
 package Controller;
 import Model.Model;
-import View.Vista;
+import Model.Line;
+import View.View;
 import java.awt.event.*;
-import java.awt.geom.Line2D;
 public class PaintMouseListener extends MouseAdapter {
-    Vista vista;
+    View vista;
     Model modelo;
     private int x1,y1;
-    private Line2D tempLine;
-    public PaintMouseListener(Vista vista, Model modelo) {
+    private Line line;
+    public PaintMouseListener(View vista, Model modelo) {
         this.vista = vista;
         this.modelo = modelo;
     }
@@ -18,8 +18,8 @@ public class PaintMouseListener extends MouseAdapter {
         x1 = e.getX();
         y1 = e.getY();
 
-        tempLine = new Line2D.Double(x1, y1, x1, y1);
-        modelo.addLine(tempLine);
+        line = new Line(x1, y1, x1, y1);
+        modelo.addLine(line);
         vista.repaint();
         
     }
@@ -29,9 +29,10 @@ public class PaintMouseListener extends MouseAdapter {
         int x2 = e.getX();
         int y2 = e.getY();
 
-        tempLine.setLine(x1, y1, x2, y2);
+        line.setLine(x1, y1, x2, y2);
+        vista.setTemporalLine(line);
         vista.repaint();
-        
+
     }
 
     @Override
@@ -39,14 +40,14 @@ public class PaintMouseListener extends MouseAdapter {
         int x2 = e.getX();
         int y2 = e.getY();
 
-        Line2D line = new Line2D.Double(x1, y1, x2, y2);
+        Line line = new Line(x1, y1, x2, y2);
         modelo.addLine(line);
-        modelo.remove(tempLine);
+        modelo.remove(line);
         vista.repaint();
 
         x1 = 0;
         y1 = 0;
-        tempLine = null;
+        line = null;
     }
 
     public void actionUndo(ActionEvent e) {

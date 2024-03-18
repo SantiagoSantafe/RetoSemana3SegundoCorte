@@ -1,10 +1,10 @@
 import Model.Model;
-import View.Vista;
+import View.View;
 
 public class MainFrame {
     public static void main(String[] args) {
         Model modelo = new Model();
-        Vista vista = new Vista(modelo);
+        View vista = new View(modelo);
         vista.setVisible(true);
     }
 }

@@ -2,13 +2,12 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.geom.Line2D;
 
 
 public class Model {
-    private List<Line2D> lines;
-    private List<Line2D> undoStack;
-    private List<Line2D> redoStack;
+    private List<Line> lines;
+    private List<Line> undoStack;
+    private List<Line> redoStack;
 
     public Model() {
         lines = new ArrayList<>();
@@ -16,7 +15,7 @@ public class Model {
         redoStack = new ArrayList<>();
     }
 
-    public void addLine(Line2D line) {
+    public void addLine(Line line) {
         lines.add(line);
         undoStack.add(line);
         redoStack.clear();
@@ -36,11 +35,11 @@ public class Model {
         }
     }
 
-    public List<Line2D> getLines() {
+    public List<Line> getLines() {
         return lines;
     }
 
-    public void remove(Line2D tempLine) {
-        lines.remove(tempLine);
+    public void remove(Line line) {
+        lines.remove(line);
     }
 }

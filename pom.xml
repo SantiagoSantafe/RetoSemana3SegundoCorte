@@ -1,7 +1,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>co.edu.unisabana</groupId>
-  <artifactId>app-dibujo</artifactId>
+  <artifactId>LinePaint</artifactId>
   <version>1.0</version>
 
     <build>
