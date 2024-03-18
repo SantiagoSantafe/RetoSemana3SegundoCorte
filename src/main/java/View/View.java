@@ -22,7 +22,6 @@ public class Vista extends JPanel{
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600,400);
-        //hacer que el frame aparezca en medio de la pantalla
         frame.setLocationRelativeTo(null);
         
         JPanel panel = new JPanel();
@@ -34,7 +33,6 @@ public class Vista extends JPanel{
 
         undoButton.addActionListener(e -> pml.actionUndo(e));
         redoButton.addActionListener(e -> pml.actionRedo(e));
-        // Ubicar los botones en la parte de abajo del frame que ocupen solo 20 pixeles de altura
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
